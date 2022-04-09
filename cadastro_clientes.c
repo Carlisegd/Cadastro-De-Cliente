@@ -16,7 +16,7 @@ struct cliente{
 
 void menu(){
 	
-	printf("--->ESCOLHA UMA DAS OPÇÕES\n\n");
+    printf("--->ESCOLHA UMA DAS OPÃ‡Ã•ES\n\n");
     printf("1. Listar clientes \n");
     printf("2. Inserir cliente \n");
     printf("3. Remover cliente \n");
@@ -25,7 +25,7 @@ void menu(){
     printf("6. Encontrar melhor comprador \n");
     printf("7. Exibir montante de um cliente \n");
     printf("8. Finalizar programa \n\n");
-    printf("--->Digite a opção desejada: \n");
+    printf("--->Digite a opÃ§Ã£o desejada: \n");
 }
 
 
@@ -53,12 +53,12 @@ int cadastrar_cliente(struct cliente **clientes, int qtd_cadastros){
 
 void listar_clientes(struct cliente *clientes, int qtd_cadastros){
 
-		int i;
-    for (i = 0; i < qtd_cadastros; i++ ){
-        printf("Cliente %d \n", i);
-        printf("Nome: %s \n", clientes[i].nome);
-        printf("Ano nascimento: %d \n", clientes[i].ano_nasc);
-        printf("Montante gasto: %f \n\n\n", clientes[i].gasto);
+	int i;
+    	for (i = 0; i < qtd_cadastros; i++ ){
+		printf("Cliente %d \n", i);
+		printf("Nome: %s \n", clientes[i].nome);
+		printf("Ano nascimento: %d \n", clientes[i].ano_nasc);
+		printf("Montante gasto: %f \n\n\n", clientes[i].gasto);
     }
 }
 
@@ -87,8 +87,8 @@ int excluir_cliente(struct cliente *clientes, int qtd_cadastros){
         return -1;
     }
 
-		int i;
-    for (i = pos_exclusao; i < qtd_cadastros - 1; i++){
+	int i;
+    	for (i = pos_exclusao; i < qtd_cadastros - 1; i++){
         memcpy(clientes[i].nome, clientes[i + 1].nome, sizeof(clientes[i + 1].nome));
         clientes[i].ano_nasc =  clientes[i + 1].ano_nasc;
         clientes[i].gasto =  clientes[i + 1].gasto;
@@ -117,8 +117,8 @@ int atualizar_gasto(struct cliente *clientes, int qtd_cadastros){
 
 void zerar_gastos(struct cliente *clientes, int qtd_cadastros){
 
-		int i;
-    for (i = 0; i < qtd_cadastros; i++){
+	int i;
+    	for (i = 0; i < qtd_cadastros; i++){
         clientes[i].gasto =  0.0;
     }
 }
@@ -171,7 +171,7 @@ int main(){
         if (opcao == 8){
             break;
         }else if (opcao > 8 || opcao < 1){
-            printf("Opção não existente!");
+            printf("OpÃ§Ã£o nÃ£o existente!");
         }else{
             if (opcao == 2){
                 cadastrar_cliente(&clientes, qtd_cadastros);
@@ -181,20 +181,20 @@ int main(){
             }else if (opcao == 3){
                 verif_op = excluir_cliente(clientes, qtd_cadastros);
                 if (verif_op == -1){
-                    printf("Erro na exclusão!");
+                    printf("Erro na exclusÃ£o!");
                 }else{
                     qtd_cadastros--;
                 }
             }else if (opcao == 4){
                 verif_op = atualizar_gasto(clientes, qtd_cadastros);
                 if (verif_op == -1){
-                    printf("Erro na atualização!");
+                    printf("Erro na atualizaÃ§Ã£o!");
                 }
             }else if (opcao == 5){
                 zerar_gastos(clientes, qtd_cadastros);
             }else if (opcao == 6){
                 pos_melhor_cliente = encontrar_melhor_cliente(clientes, qtd_cadastros);
-                printf("O melhor cliente é %s", clientes[pos_melhor_cliente].nome);
+                printf("O melhor cliente Ã© %s", clientes[pos_melhor_cliente].nome);
             }else if (opcao == 7){
                 verif_op = exibir_montante_cliente(clientes, qtd_cadastros);
                 if (verif_op == -1){
